@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+<script language="JavaScript">
+    var callback = function(data) {
+        console.log("Callback fired with: " + data);
+        $("#asynDiv").html("GOT BACK THE RESULT "+data);
+    };
+
+    function callws(){
+        // $.get is a non-blocking, asynchronous call
+    $.get('/sample/'+$("#txtInput").val() , callback);
+
+    // When this line is executed, we are not garaunteed that the call to /example
+    // has completed
+    console.log('This line may execute before the callback!');
+    }
+
+
+</script>
+
+<input type="text" id="txtInput"/> <input type="button" onclick="callws()" />
+
+<div id="asynDiv"></div>
+</body>
+</html>
